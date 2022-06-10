@@ -14,6 +14,15 @@ public class Order {
     public Order() {
     }
 
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", customerId=" + customerId +
+                ", status='" + status + '\'' +
+                '}';
+    }
+
     public int getId() {
         return id;
     }

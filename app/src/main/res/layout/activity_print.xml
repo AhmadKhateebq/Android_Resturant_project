@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.PrintActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:text="@string/chose_a_meal"
+
+            style="@style/TextStyle" />
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="411dp"
+            android:layout_height="87dp"
+            android:layout_marginBottom="20dp"
+            android:prompt="@string/app_name" />
+
+        <Button
+            android:id="@+id/addToBasket"
+            style="@style/TextStyle"
+            android:onClick="submit_onClick"
+            android:text="@string/add" />
+        <Button
+            android:id="@+id/getItems"
+            style="@style/TextStyle"
+            android:onClick="getItems"
+            android:text="@string/get_items" />
+
+        <TextView
+            android:id="@+id/description"
+            style="@style/TextStyle" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

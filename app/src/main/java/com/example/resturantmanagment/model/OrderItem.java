@@ -18,6 +18,17 @@ public class OrderItem {
     public OrderItem() {
     }
 
+    @Override
+    public String toString() {
+        return "OrderItem{" +
+                "id=" + id +
+                ", orderId=" + orderId +
+                ", itemId=" + itemId +
+                ", quantity=" + quantity +
+                ", price=" + price +
+                '}';
+    }
+
     public int getId() {
         return id;
     }

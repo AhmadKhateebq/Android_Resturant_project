@@ -46,4 +46,9 @@ public class Item {
     public void setCategory(String category) {
         this.category = category;
     }
+
+    @Override
+    public String toString() {
+        return  (id+1)+" - "+name +" " + price + " $" ;
+    }
 }
