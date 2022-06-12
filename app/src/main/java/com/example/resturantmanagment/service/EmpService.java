@@ -6,13 +6,14 @@ import com.example.resturantmanagment.model.Order;
 import com.example.resturantmanagment.model.enums.ROLE;
 import com.example.resturantmanagment.model.enums.STATUS;
 import com.example.resturantmanagment.resource.OrderRes;
+import com.example.resturantmanagment.resource.repository.OrderRepository;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class EmpService {
     static List<OrderDto> orders = OrderService.getAllOrders();
-
+    private static OrderRepository orderRepository = OrderRes.getInstance();
     public static List<OrderDto> getOrders(Employee employee) {
         return switch (employee.getRole()) {
             case CHEF -> getChefOrders();
@@ -54,7 +55,7 @@ public class EmpService {
     }
 
     public static void changeOrderStatus(Order order, STATUS status) {
-        OrderRes.getOrder(order.getId()).setStatus(status);
+        orderRepository.getOrder(order.getId()).setStatus(status);
         order.setStatus(status);
     }
 

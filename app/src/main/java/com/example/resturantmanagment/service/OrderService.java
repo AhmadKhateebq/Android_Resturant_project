@@ -8,8 +8,13 @@ import com.example.resturantmanagment.model.Order;
 import com.example.resturantmanagment.model.OrderItem;
 import com.example.resturantmanagment.model.enums.STATUS;
 import com.example.resturantmanagment.resource.CustomerRes;
+import com.example.resturantmanagment.resource.EmployeeRes;
 import com.example.resturantmanagment.resource.OrderItemRes;
 import com.example.resturantmanagment.resource.OrderRes;
+import com.example.resturantmanagment.resource.repository.CustomerRepository;
+import com.example.resturantmanagment.resource.repository.EmployeeRepository;
+import com.example.resturantmanagment.resource.repository.OrderItemRepository;
+import com.example.resturantmanagment.resource.repository.OrderRepository;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,6 +22,9 @@ import java.util.List;
 
 public class OrderService {
 
+    private static OrderRepository orderRepository = OrderRes.getInstance();
+    private static OrderItemRepository orderItemRepository = OrderItemRes.getInstance();
+    private static CustomerRepository customerRepository = CustomerRes.getInstance();
     public static Order addOrder(List<Item> items, Customer customer) {
         return addOrder(items, customer, false);
     }
@@ -26,7 +34,7 @@ public class OrderService {
         order.setCustomerId(customer.getId());
         order.setStatus(STATUS.WAITING);
         order.setOutside(out);
-        order = OrderRes.addOrder(order);
+        order = orderRepository.addOrder(order);
 
         HashMap<Item, Integer> itemsMap = new HashMap<>();
         HashMap<Item, OrderItem> orderItems = new HashMap<>();
@@ -52,12 +60,12 @@ public class OrderService {
 
     public static List<OrderDto> getAllOrders() {
         List<OrderDto> list = new ArrayList<>();
-        for (Order order : OrderRes.getOrders()) {
+        for (Order order : orderRepository.getOrders()) {
             OrderDto dto = new OrderDto();
             dto.setOrderId(order.getId());
-            dto.setCustomerName(CustomerRes.findById(order.getCustomerId()).getName());
+            dto.setCustomerName(customerRepository.findById(order.getCustomerId()).getName());
             dto.setStatus(order.getStatus());
-            dto.setItems(OrderItemRes.getItemsByOrderId(order.getId()));
+            dto.setItems(orderItemRepository.getItemsByOrderId(order.getId()));
             list.add(dto);
         }
         return list;

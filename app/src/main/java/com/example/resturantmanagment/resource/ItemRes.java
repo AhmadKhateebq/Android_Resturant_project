@@ -1,10 +1,23 @@
 package com.example.resturantmanagment.resource;
 
 import com.example.resturantmanagment.model.Item;
+import com.example.resturantmanagment.resource.repository.ItemRepository;
 
 import java.util.ArrayList;
 
-public class ItemRes {
+public class ItemRes implements ItemRepository {
+    static ItemRes INSTANCE;
+
+    public static ItemRes getInstance() {
+        if (INSTANCE == null){
+            synchronized (EmployeeRes.class){
+                if (INSTANCE == null){
+                    INSTANCE = new ItemRes();
+                }
+            }
+        }
+        return INSTANCE;
+    }
     public static ArrayList<Item> items = new ArrayList<>() {{
         add(new Item(0, "salad", 10, "salad"));
         add(new Item(1, "chicken salad", 10, "salad"));
@@ -13,14 +26,14 @@ public class ItemRes {
         add(new Item(4, "Fries", 10, "appetizers"));
     }};
 
-    public static Item findByName(String name) {
+    public Item findByName(String name) {
         for (Item item : items)
             if (item.getName().equals(name))
                 return item;
         return null;
     }
 
-    public static Item findById(int id) {
+    public Item findById(int id) {
         return items.get(id);
     }
 }

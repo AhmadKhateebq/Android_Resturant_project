@@ -12,6 +12,7 @@ import com.example.resturantmanagment.RestaurantService;
 import com.example.resturantmanagment.dto.OrderDto;
 import com.example.resturantmanagment.model.Order;
 import com.example.resturantmanagment.model.enums.ROLE;
+import com.example.resturantmanagment.model.enums.STATUS;
 
 import java.util.ArrayList;
 
@@ -56,9 +57,9 @@ public class ChangeStatusActivity extends AppCompatActivity {
 
     private void addOrdToSpinner() {
         ArrayList<String> arr = new ArrayList<>();
-
-        for (OrderDto allOrder : service.getOrdersReportAsObject()) {
-            arr.add(allOrder.toSpinner());
+        for (OrderDto order : service.getOrdersReportAsObject()) {
+            if (!order.getStatus().equals(STATUS.DONE))
+                    arr.add(order.toSpinner());
         }
         ArrayAdapter<String> arrayAdapter =
                 new ArrayAdapter<>(this,
