@@ -1,13 +1,16 @@
 package com.example.resturantmanagment.model;
 
+import com.example.resturantmanagment.model.enums.STATUS;
+
 public class Order {
     int id;
     int customerId;
-    String status;
-
-    public Order(int id, int customerId, String status) {
+    boolean outside;
+    STATUS status;
+    public Order(int id, int customerId,boolean outside, STATUS status) {
         this.id = id;
         this.customerId = customerId;
+        this.outside = outside;
         this.status = status;
     }
 
@@ -39,11 +42,19 @@ public class Order {
         this.customerId = customerId;
     }
 
-    public String getStatus() {
+    public STATUS getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(STATUS status) {
         this.status = status;
+    }
+
+    public boolean isOutside() {
+        return outside;
+    }
+
+    public void setOutside(boolean outside) {
+        this.outside = outside;
     }
 }

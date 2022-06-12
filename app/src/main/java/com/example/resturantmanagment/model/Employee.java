@@ -1,5 +1,7 @@
 package com.example.resturantmanagment.model;
 
+import com.example.resturantmanagment.model.enums.ROLE;
+
 public class Employee {
     int id;
     String name;
@@ -7,9 +9,9 @@ public class Employee {
     String password;
     String email;
     String phone;
-    String role;
+    ROLE role;
 
-    public Employee(int id, String name, String username, String password, String email, String phone, String role) {
+    public Employee(int id, String name, String username, String password, String email, String phone, ROLE role) {
         this.id = id;
         this.name = name;
         this.username = username;
@@ -83,11 +85,11 @@ public class Employee {
         this.phone = phone;
     }
 
-    public String getRole() {
+    public ROLE getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(ROLE role) {
         this.role = role;
     }
 }

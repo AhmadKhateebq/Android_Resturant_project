@@ -10,9 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ResturantManagment">
         <activity
+            android:name=".activity.ChangeStatusActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.FinalActivity"
             android:exported="false" />
-
         <activity
             android:name=".activity.MainActivity"
             android:exported="true">

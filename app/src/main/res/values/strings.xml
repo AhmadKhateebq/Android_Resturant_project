@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">ResturantManagment</string>
     <string name="chose_a_meal">Chose a Meal to add</string>
+    <string name="chooseARole">Chose a role</string>
     <string name="add">Add to the Basket</string>
+    <string name="changeStatus">Change Status</string>
     <string name="go">Enter</string>
     <string name="email">SEND EMAIL</string>
     <string name="get_items">GET ITEMS</string>

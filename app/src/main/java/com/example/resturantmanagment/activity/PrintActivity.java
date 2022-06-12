@@ -15,7 +15,9 @@ import com.example.resturantmanagment.model.Customer;
 import com.example.resturantmanagment.model.Item;
 import com.example.resturantmanagment.resource.CustomerRes;
 import com.example.resturantmanagment.resource.ItemRes;
+import com.example.resturantmanagment.resource.OrderRes;
 import com.example.resturantmanagment.service.ArrService;
+import com.example.resturantmanagment.service.OrderService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,6 +64,7 @@ public class PrintActivity extends AppCompatActivity {
         textView.setText("Total = "+total +" $");
     }
     public void getItems(View view){
+        OrderService.addOrder(list,customer);
         Intent intent = new Intent(PrintActivity.this,FinalActivity.class);
         intent.putExtra("total",this.total);
         startActivity(intent);

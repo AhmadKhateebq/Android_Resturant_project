@@ -25,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        System.out.println("hello");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         username = findViewById(R.id.username);
@@ -35,12 +34,13 @@ public class MainActivity extends AppCompatActivity {
         try {
            TempUser user = new TempUser(username.getText().toString(),password.getText().toString());
             if (CustomerRes.verify(user)){
-                Intent intent = new Intent(this, PrintActivity.class);
+//                Intent intent = new Intent(this, PrintActivity.class);
+                Intent intent = new Intent(this, ChangeStatusActivity.class);
                 intent.putExtra("username", user.getUsername());
                 startActivity(intent);
             }
             else
-                Toast.makeText(MainActivity.this, "Wring Username or Password", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Wrong Username or Password", Toast.LENGTH_SHORT).show();
         } catch (Exception ex) {
             Log.e(TAG,ex.getMessage());
             Toast.makeText(MainActivity.this,

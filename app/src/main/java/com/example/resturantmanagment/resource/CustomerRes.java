@@ -28,4 +28,18 @@ public class CustomerRes {
         }
         return null;
     }
+    public static Customer findByName(String name){
+        for (Customer customer : customers) {
+            if (customer.getName().equals(name))
+                return customer;
+        }
+        return null;
+    }
+    public static Customer findById(int id){
+        for (Customer customer : customers) {
+            if (customer.getId() == id)
+                return customer;
+        }
+        return null;
+    }
 }
