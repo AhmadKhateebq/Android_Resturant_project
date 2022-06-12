@@ -1,6 +1,8 @@
 package com.example.resturantmanagment.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -21,7 +23,12 @@ public class FinalActivity extends AppCompatActivity {
         ArrayList<String>arr = OrderService.ordersReport();
         ArrayAdapter adapter = new ArrayAdapter<>(this,
                 R.layout.listview_item, arr);
-        ListView listView = (ListView) findViewById(R.id.item_list);
+        ListView listView = findViewById(R.id.item_list);
         listView.setAdapter(adapter);
+    }
+
+    public void goToChangeStatus(View view) {
+        Intent intent = new Intent(this,ChangeStatusActivity.class);
+        startActivity(intent);
     }
 }

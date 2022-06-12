@@ -5,7 +5,7 @@ import com.example.resturantmanagment.model.enums.STATUS;
 import java.util.List;
 
 public class OrderDto {
-    private static int idC = 0;
+    private static int idC = 3;
     int orderId;
     String customerName;
     STATUS status;
@@ -32,6 +32,7 @@ public class OrderDto {
     }
     public OrderDto() {
         this.id = idC++;
+        status = STATUS.WAITING;
     }
 
     public int getOrderId() {

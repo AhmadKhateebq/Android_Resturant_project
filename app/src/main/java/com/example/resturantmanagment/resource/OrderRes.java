@@ -20,7 +20,7 @@ public class OrderRes {
 
     public static Order addOrder(Order order){
         Order newOrder = new Order(id++, order.getCustomerId(), order.isOutside(), order.getStatus());
-        orders.add(new Order());
+        orders.add(newOrder);
         return newOrder;
     }
     public static Order getOrder(int id){

@@ -57,18 +57,18 @@ public class EmpService {
         OrderRes.getOrder(order.getId()).setStatus(status);
         order.setStatus(status);
     }
-    public static void changeOrderStatus(Order order, Employee employee){
-        changeOrderStatus(order,employee.getRole());
+
+    public static void changeOrderStatus(Order order, Employee employee) {
+        changeOrderStatus(order, employee.getRole());
     }
+
     public static void changeOrderStatus(Order order, ROLE role) {
         if (role == ROLE.CHEF) {
             if (order.getStatus() == STATUS.WAITING)
                 changeOrderStatus(order, STATUS.COOKING);
-
-            if (order.getStatus() == STATUS.COOKING && order.isOutside())
+            else if (order.getStatus() == STATUS.COOKING && order.isOutside())
                 changeOrderStatus(order, STATUS.WAITING_TO_PICKUP);
-
-            if (order.getStatus() == STATUS.COOKING && !order.isOutside())
+            else if (order.getStatus() == STATUS.COOKING && !order.isOutside())
                 changeOrderStatus(order, STATUS.WAITING_TO_SERVE);
 
         }
@@ -81,7 +81,7 @@ public class EmpService {
             if (order.isOutside()) {
                 if (order.getStatus() == STATUS.WAITING_TO_PICKUP)
                     changeOrderStatus(order, STATUS.ON_THE_WAY);
-                if (order.getStatus() == STATUS.ON_THE_WAY)
+                else if (order.getStatus() == STATUS.ON_THE_WAY)
                     changeOrderStatus(order, STATUS.DONE);
             }
         }

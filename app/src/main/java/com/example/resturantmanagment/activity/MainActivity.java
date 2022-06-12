@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
            TempUser user = new TempUser(username.getText().toString(),password.getText().toString());
             if (CustomerRes.verify(user)){
 //                Intent intent = new Intent(this, PrintActivity.class);
-                Intent intent = new Intent(this, ChangeStatusActivity.class);
+                Intent intent = new Intent(this, PrintActivity.class);
                 intent.putExtra("username", user.getUsername());
                 startActivity(intent);
             }

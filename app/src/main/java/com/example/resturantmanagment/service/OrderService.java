@@ -18,9 +18,13 @@ import java.util.List;
 public class OrderService {
 
     public static Order addOrder(List<Item> items, Customer customer){
+        return addOrder(items,customer,false);
+    }
+    public static Order addOrder(List<Item> items, Customer customer,boolean out){
         Order order = new Order();
         order.setCustomerId(customer.getId());
         order.setStatus(STATUS.WAITING);
+        order.setOutside(out);
         order = OrderRes.addOrder(order);
 
         HashMap<Item,Integer> itemsMap = new HashMap<>();

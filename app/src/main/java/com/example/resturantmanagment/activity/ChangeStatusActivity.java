@@ -34,10 +34,12 @@ public class ChangeStatusActivity extends AppCompatActivity {
     }
 
     public void changeStatus(View view) {
-        Order order = getOrderFromDtoString(orderSpinner.getSelectedItem().toString()); ;
+        Order order = getOrderFromDtoString(orderSpinner.getSelectedItem().toString());
+        long id = orderSpinner.getSelectedItemId();
         EmpService.changeOrderStatus(order, ROLE.valueOf(empSpinner.getSelectedItem().toString()));
         Toast.makeText(this,order+" STATUS CHANGED",Toast.LENGTH_LONG).show();
         addOrdToSpinner();
+        orderSpinner.setSelection((int) id);
     }
     private Order getOrderFromDtoString(String dto){
       String orderId = dto.split(" ")[1];

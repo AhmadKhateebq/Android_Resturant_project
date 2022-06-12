@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,6 +27,8 @@ public class PrintActivity extends AppCompatActivity {
     Spinner spinner;
     TextView textView;
     Customer customer;
+    Switch aSwitch;
+    boolean out = true;
     public static List<Item> list = new ArrayList<>();
     int total = 0;
     @Override
@@ -34,13 +37,16 @@ public class PrintActivity extends AppCompatActivity {
         setContentView(R.layout.activity_print);
         spinner = findViewById(R.id.spinner);
         textView  = findViewById(R.id.description);
+        aSwitch = findViewById(R.id.switch1);
         textView.setText("Total = 0$");
         Bundle extras = getIntent().getExtras();
         String value = extras.getString("username");
         customer = CustomerRes.findByUsername(value);
         Toast.makeText(PrintActivity.this,"0 "+customer.toString(),Toast.LENGTH_LONG).show();
         addItemsToSpinner();
+
     }
+
 
     private void addItemsToSpinner() {
         ArrayAdapter<String> arrayAdapter =
@@ -64,9 +70,19 @@ public class PrintActivity extends AppCompatActivity {
         textView.setText("Total = "+total +" $");
     }
     public void getItems(View view){
-        OrderService.addOrder(list,customer);
+        OrderService.addOrder(list,customer,out);
         Intent intent = new Intent(PrintActivity.this,FinalActivity.class);
         intent.putExtra("total",this.total);
         startActivity(intent);
+    }
+
+    public void switchState(View view) {
+        if(aSwitch.getText().equals("inside")){
+            aSwitch.setText("outside");
+            out = true;
+        }else{
+            aSwitch.setText("inside");
+            out = false;
+        }
     }
 }

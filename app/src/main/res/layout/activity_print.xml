@@ -39,5 +39,12 @@
             android:id="@+id/description"
             style="@style/TextStyle" />
 
+        <Switch
+            android:id="@+id/switch1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/inside"
+            android:onClick="switchState"/>
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
