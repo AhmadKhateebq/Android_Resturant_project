@@ -133,6 +133,9 @@ public class RestaurantService {
     public Item getItemById(int id) {
         return itemRepository.findById(id);
     }
+    public List<Item> getAllItems(){
+        return itemRepository.getAllItems();
+    }
 
     public void makeToast(Context context, String message) {
         Toast.makeText(context, message, Toast.LENGTH_LONG).show();

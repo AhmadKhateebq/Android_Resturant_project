@@ -4,6 +4,7 @@ import com.example.resturantmanagment.model.Item;
 import com.example.resturantmanagment.resource.repository.ItemRepository;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ItemRes implements ItemRepository {
     static ItemRes INSTANCE;
@@ -31,6 +32,11 @@ public class ItemRes implements ItemRepository {
             if (item.getName().equals(name))
                 return item;
         return null;
+    }
+
+    @Override
+    public List<Item> getAllItems() {
+        return items;
     }
 
     public Item findById(int id) {

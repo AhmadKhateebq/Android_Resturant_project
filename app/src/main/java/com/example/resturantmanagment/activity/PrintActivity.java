@@ -41,7 +41,7 @@ public class PrintActivity extends AppCompatActivity {
         textView.setText("Total = 0$");
         Bundle extras = getIntent().getExtras();
         String value = extras.getString("username");
-        customer = CustomerRes.findByUsername(value);
+        customer = CustomerRes.getInstance().findByUsername(value);
         service.makeToast(this, "0 " + customer.toString());
         addItemsToSpinner();
     }
@@ -62,7 +62,7 @@ public class PrintActivity extends AppCompatActivity {
                 item
         );
         int id = Integer.parseInt(item.split(" ")[0]) - 1;
-        Item menuItem = ItemRes.findById(id);
+        Item menuItem = ItemRes.getInstance().findById(id);
         list.add(menuItem);
         total += menuItem.getPrice();
         textView.setText("Total = " + total + " $");
