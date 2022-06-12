@@ -1,9 +1,9 @@
 package com.example.resturantmanagment.dto;
 
 public class ItemDto {
-    String name;
-    int quantity;
-    double price;
+    private String name;
+    private int quantity;
+    private double price;
 
     @Override
     public String toString() {

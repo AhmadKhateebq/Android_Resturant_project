@@ -1,8 +1,8 @@
 package com.example.resturantmanagment.model;
 
 public class TempUser {
-    String username;
-    String password;
+    private String username;
+    private String password;
 
     public TempUser(String username, String password) {
         this.username = username;

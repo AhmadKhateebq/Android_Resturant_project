@@ -1,10 +1,11 @@
 package com.example.resturantmanagment.model;
 
 public class Item {
-    int id;
-    String name;
-    int price;
-    String category;
+    private int id;
+    private String name;
+    private int price;
+    private String category;
+
     public Item(int id, String name, int price, String category) {
         this.id = id;
         this.name = name;
@@ -49,6 +50,6 @@ public class Item {
 
     @Override
     public String toString() {
-        return  (id+1)+" - "+name +" " + price + " $" ;
+        return (id + 1) + " - " + name + " " + price + " $";
     }
 }

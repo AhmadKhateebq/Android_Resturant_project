@@ -5,12 +5,10 @@ import com.example.resturantmanagment.model.enums.STATUS;
 import java.util.List;
 
 public class OrderDto {
-    private static int idC = 3;
-    int orderId;
-    String customerName;
-    STATUS status;
-    int id;
-    List<ItemDto> items;
+    private int orderId;
+    private String customerName;
+    private STATUS status;
+    private List<ItemDto> items;
 
     @Override
     public String toString() {
@@ -23,16 +21,15 @@ public class OrderDto {
         }
         sb.append("Order Status : ")
                 .append(status)
-        .append("\n").append("RECEIPT : ").append(orderId);
-        return sb.toString() ;
+                .append("\n").append("RECEIPT : ").append(orderId);
+        return sb.toString();
     }
 
-    public String toSpinner(){
-        return "Order "+orderId +" for customer "+customerName+" "+status;
+    public String toSpinner() {
+        return "Order " + orderId + " for customer " + customerName + " " + status;
     }
+
     public OrderDto() {
-        this.id = idC++;
-        status = STATUS.WAITING;
     }
 
     public int getOrderId() {

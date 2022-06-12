@@ -3,13 +3,13 @@ package com.example.resturantmanagment.model;
 import com.example.resturantmanagment.model.enums.ROLE;
 
 public class Employee {
-    int id;
-    String name;
-    String username;
-    String password;
-    String email;
-    String phone;
-    ROLE role;
+    private int id;
+    private String name;
+    private String username;
+    private String password;
+    private String email;
+    private String phone;
+    private ROLE role;
 
     public Employee(int id, String name, String username, String password, String email, String phone, ROLE role) {
         this.id = id;

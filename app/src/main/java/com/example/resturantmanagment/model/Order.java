@@ -3,11 +3,12 @@ package com.example.resturantmanagment.model;
 import com.example.resturantmanagment.model.enums.STATUS;
 
 public class Order {
-    int id;
-    int customerId;
-    boolean outside;
-    STATUS status;
-    public Order(int id, int customerId,boolean outside, STATUS status) {
+    private int id;
+    private int customerId;
+    private boolean outside;
+    private STATUS status;
+
+    public Order(int id, int customerId, boolean outside, STATUS status) {
         this.id = id;
         this.customerId = customerId;
         this.outside = outside;

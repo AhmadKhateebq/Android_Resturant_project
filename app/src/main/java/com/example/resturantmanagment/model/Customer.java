@@ -1,12 +1,12 @@
 package com.example.resturantmanagment.model;
 
 public class Customer {
-    int id;
-    String name;
-    String username;
-    String password;
-    String email;
-    String phone;
+    private int id;
+    private String name;
+    private String username;
+    private String password;
+    private String email;
+    private String phone;
 
     public Customer(int id, String name, String username, String password, String email, String phone) {
         this.id = id;

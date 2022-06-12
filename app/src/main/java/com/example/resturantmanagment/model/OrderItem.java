@@ -1,11 +1,11 @@
 package com.example.resturantmanagment.model;
 
 public class OrderItem {
-    int id;
-    int orderId;
-    int itemId;
-    int quantity;
-    int price;
+    private int id;
+    private int orderId;
+    private int itemId;
+    private int quantity;
+    private int price;
 
     public OrderItem(int id, int orderId, int itemId, int quantity, int price) {
         this.id = id;
