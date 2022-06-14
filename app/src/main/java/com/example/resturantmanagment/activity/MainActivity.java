@@ -2,6 +2,7 @@ package com.example.resturantmanagment.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
@@ -9,7 +10,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.resturantmanagment.R;
 import com.example.resturantmanagment.RestaurantService;
+import com.example.resturantmanagment.VolleyService;
 import com.example.resturantmanagment.model.TempUser;
+
+import org.json.JSONException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,6 +41,15 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception ex) {
             service.makeToast(this,
                     "Please enter your login info");
+        }
+    }
+    public void getItems(View view){
+        VolleyService service =VolleyService.getInstance();
+        try {
+            service.getData("http://10.0.2.2:8080/1",this,new TempUser("aaa","aaa"));
+            Log.i(this.getClass().getName(),service.latestResponse.toString());
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
     }
 }

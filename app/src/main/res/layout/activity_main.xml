@@ -37,5 +37,13 @@
         android:text="@string/go"
         tools:layout_editor_absoluteX="180dp"
         tools:layout_editor_absoluteY="458dp" />
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="getItems"
+        android:text="@string/go"
+        tools:layout_editor_absoluteX="180dp"
+        tools:layout_editor_absoluteY="458dp" />
 
 </LinearLayout>

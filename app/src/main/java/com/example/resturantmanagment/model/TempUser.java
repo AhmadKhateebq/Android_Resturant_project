@@ -12,6 +12,14 @@ public class TempUser {
     public TempUser() {
     }
 
+    @Override
+    public String toString() {
+        return "TempUser{" +
+                "username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
+
     public String getUsername() {
         return username;
     }
