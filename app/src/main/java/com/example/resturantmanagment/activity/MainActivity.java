@@ -43,13 +43,5 @@ public class MainActivity extends AppCompatActivity {
                     "Please enter your login info");
         }
     }
-    public void getItems(View view){
-        VolleyService service =VolleyService.getInstance();
-        try {
-            service.getData("http://10.0.2.2:8080/1",this,new TempUser("aaa","aaa"));
-            Log.i(this.getClass().getName(),service.latestResponse.toString());
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }
+
 }

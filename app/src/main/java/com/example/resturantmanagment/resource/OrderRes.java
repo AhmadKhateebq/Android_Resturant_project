@@ -1,5 +1,7 @@
 package com.example.resturantmanagment.resource;
 
+import android.util.Log;
+
 import com.example.resturantmanagment.model.Order;
 import com.example.resturantmanagment.model.enums.STATUS;
 import com.example.resturantmanagment.resource.repository.OrderRepository;
@@ -34,6 +36,7 @@ public class OrderRes implements OrderRepository {
     public Order addOrder(Order order) {
         Order newOrder = new Order(id++, order.getCustomerId(), order.isOutside(), order.getStatus());
         orders.add(newOrder);
+        orders.forEach(v-> Log.i("i",v.toString()));
         return newOrder;
     }
 

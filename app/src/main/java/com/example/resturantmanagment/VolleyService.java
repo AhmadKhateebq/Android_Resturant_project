@@ -8,17 +8,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.resturantmanagment.model.TempUser;
 import com.google.gson.Gson;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.lang.reflect.Type;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class VolleyService {
     static VolleyService INSTANCE;
-    public Object latestResponse = new Object();
+    public static AtomicReference<Object> latestResponse = new AtomicReference<>(new TempUser("test","test"));
     private VolleyService() {
     }
 
@@ -30,16 +33,17 @@ public class VolleyService {
             }
         return INSTANCE;
     }
-    public void getData(String url, AppCompatActivity activity,Object body) throws JSONException {
+    public Object getData(String url, AppCompatActivity activity,Object body) {
         RequestQueue mRequestQueue = Volley.newRequestQueue(activity);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                 Request.Method.POST,
                 url,
                 conv(body),
                 response -> extracted(response,activity,body.getClass()),
-                error -> Log.i(this.getClass().getName(), "Error :" + error)
+                error -> error.printStackTrace()
         );
         mRequestQueue.add(jsonObjectRequest);
+        return latestResponse;
     }
     private void extracted(JSONObject jsonObject,AppCompatActivity activity,Type classType) {
         Toast.makeText(
@@ -49,20 +53,28 @@ public class VolleyService {
         ).show();//display the response on screen
         printData(jsonObject,classType);
     }
-    private void printData(JSONObject response,Type object){
-        latestResponse = conv(response,object);
+
+    private Object printData(JSONObject response, Type object){
+        latestResponse = new AtomicReference<>(conv(response,object));
         Log.i(this.getClass().getName(),latestResponse.toString());
+        return latestResponse;
     }
-    private Object conv(JSONObject object, Type classType){
+    public Object conv(JSONObject object, Type classType){
         Gson gson = new Gson();
         return gson.fromJson(String.valueOf(object),classType);
     }
 
-    private JSONObject conv(Object object){
+    public JSONObject conv(Object object){
+        Log.i("start",object.toString());
+        if(object.getClass() == Boolean.class){
+            object = object.toString();
+        }
         Gson gson = new Gson();
         try {
-            return new JSONObject(gson.toJson(object));
+            JSONObject jsonObject = new JSONObject(gson.toJson(object));
+            return jsonObject;
         } catch (JSONException e) {
+
             e.printStackTrace();
         }
         return null;

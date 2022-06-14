@@ -23,7 +23,7 @@ public class OrderItemRes implements OrderItemRepository {
         return INSTANCE;
     }
     public static int id = 6;
-    private static CustomerRepository customerRes = CustomerRes.getInstance();
+    private static ItemRepository itemRepository = ItemRes.getInstance();
     private static ArrayList<OrderItem> orderItems = new ArrayList<>() {{
         add(new OrderItem(0, 0, 0, 1, 10));
         add(new OrderItem(1, 0, 2, 2, 20));
@@ -50,7 +50,7 @@ public class OrderItemRes implements OrderItemRepository {
         for (OrderItem orderItem : orderItems) {
             if (orderItem.getOrderId() == id) {
                 ItemDto dto = new ItemDto(
-                        customerRes.findById(orderItem.getItemId()).getName(),
+                        itemRepository.findById(orderItem.getItemId()).getName(),
                         orderItem.getQuantity(),
                         orderItem.getPrice()
                 );
